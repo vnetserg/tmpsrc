@@ -9,11 +9,11 @@ int main(int argc, char** argv) {
     
     struct sembuf sops[16];
     for (int i = 0; i < 16; i++) {
-        sops[i].sem_num = i;
-        sops[i].sem_op = i;
-        sops[i].sem_flg = 0;
+        sops[i].sem_num = (unsigned short)i;
+        sops[i].sem_op = (short)i;
+        sops[i].sem_flg = (short)0;
     }
-    semop(sems, sops, 16);
+    semop(sems, sops, (size_t)16);
     perror("Errno after semop: ");
 	
     pause();
