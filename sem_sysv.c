@@ -4,7 +4,7 @@
 
 int main(int argc, char** argv) {
     key_t key = ftok("/tmp/sem.temp", 0);
-    int sems = semget(key, 16, IPC_CREAT);
+    int sems = semget(key, 16, IPC_CREAT | 0666);
     perror("Errno after semcreation: ");
     
     struct sembuf sops[16];
